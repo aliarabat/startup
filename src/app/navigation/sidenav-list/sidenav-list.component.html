@@ -1,0 +1,18 @@
+<a *ngIf="!isAuth" mat-list-item class="toolbar-content" routerLink="/signup" (click)="sidenav.close()">
+  <mat-icon>account_circle</mat-icon>
+  <span class="list-item-content">Signup</span>
+</a>
+<a *ngIf="!isAuth" mat-list-item class="toolbar-content" routerLink="/login" (click)="sidenav.close()">
+  <mat-icon>perm_identity</mat-icon>
+  <span class="list-item-content">Login</span>
+</a>
+<a *ngIf="isAuth" mat-list-item class="toolbar-content" routerLink="/training" (click)="sidenav.close()">
+  <mat-icon>fitness_center</mat-icon>
+  <span class="list-item-content">Training</span>
+</a>
+<mat-list-item *ngIf="isAuth" (click)="sidenav.close()">
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>eject</mat-icon>
+    <span class="list-item-content">Logout</span>
+  </button>
+</mat-list-item>

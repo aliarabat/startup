@@ -1,0 +1,15 @@
+<section style="margin-top: 2em">
+  <form (ngSubmit)="onSumbit(f)" #f="ngForm" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5">
+    <mat-form-field hintLabel="The title should have 6+ characters" fxLayoutGap="5">
+      <input type="text" placeholder="Title" matInput required ngModel name="title" minlength="6" #titleInput="ngModel"/>
+      <mat-hint align="end">{{titleInput.value?.toString().length}}/6</mat-hint>
+      <mat-error *ngIf="titleInput.hasError('required')">The title is required</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="The description should have 10+ characters" fxLayoutGap="5">
+      <input type="text" placeholder="Description" matInput required ngModel name="description" minlength="10" #descriptionInput="ngModel"/>
+      <mat-hint align="end">{{descriptionInput.value?.toString().length}}/10</mat-hint>
+      <mat-error *ngIf="descriptionInput.hasError('required')">The description is required</mat-error>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Create</button>
+  </form>
+</section>

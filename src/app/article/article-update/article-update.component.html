@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Update the article title</h1>
+<form #f="ngForm">
+  <mat-dialog-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Title" required [(ngModel)]="passedData.title"
+             #titleInput="ngModel" [ngModelOptions]="{standalone: true}">
+      <mat-error *ngIf="titleInput.hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Description" required [(ngModel)]="passedData.description"
+             #descriptionInput="ngModel"
+             [ngModelOptions]="{standalone: true}">
+      <mat-error *ngIf="descriptionInput.hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button [matDialogClose]="null" mat-button>Cancel</button>
+    <button type="submit"
+            [matDialogClose]="{id:passedData.id,title:passedData.title, description:passedData.description}"
+            mat-raised-button [disabled]="titleInput.hasError('required')||descriptionInput.hasError('required')">Update
+    </button>
+  </mat-dialog-actions>
+</form>
